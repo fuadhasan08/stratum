@@ -1,0 +1,115 @@
+/* Device greater than 450px or more */
+@media (min-width: 450px) {
+  :root {
+    --h1-size: 54px;
+    --h2-size: 36px;
+    --h3-size: 20px;
+  }
+}
+
+/* Device greater than 768px or more */
+@media (min-width: 768px) {
+  :root {
+    --h1-size: 72px;
+    --h2-size: 40px;
+    --h3-size: 22px;
+  }
+
+  h2 {
+    letter-spacing: -2px;
+  }
+
+  .container {
+    max-width: 760px;
+  }
+}
+
+/* Device greater than 992px or more */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+    padding: 0;
+  }
+
+  .container .row {
+    gap: 30px;
+  }
+
+  .row .col-6 {
+    grid-column: auto/span 6;
+  }
+
+  .mainmenu-nav {
+    all: unset;
+  }
+
+  .header .header-navbar .header-main-nav {
+    flex: 1;
+    margin: 0 55px 0 50px;
+  }
+
+  .mainmenu-nav .mainmenu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mainmenu-nav .mainmenu > li {
+    border: none;
+  }
+
+  .mainmenu > li > a::before {
+    content: '';
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .mainmenu > li.active > a::before {
+    opacity: 1;
+    width: 100%;
+  }
+
+  .mainmenu > li > a:hover::before {
+    opacity: 1;
+    width: 100%;
+  }
+
+  .mainmenu .header-btn {
+    margin-top: 0;
+    margin-left: 50px;
+  }
+
+  .header-action .mobile-menu-btn {
+    display: none;
+  }
+
+  .mobile-nav-header {
+    display: none;
+  }
+}
+
+/* Device greater than 1200px or more */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    padding: 0;
+  }
+}
+
+/* Device greater than 1500px or more */
+@media (min-width: 1500px) {
+  .container {
+    max-width: 1350px;
+    padding: 0;
+  }
+}

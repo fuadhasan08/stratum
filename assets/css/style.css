@@ -1,0 +1,379 @@
+@import url(../fonts/font.css);
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =============
+   VARRIABLES 
+===============*/
+
+:root {
+  --primary-font: 'Rubik', sans-serif;
+  --illustration-font: 'Monoton', cursive;
+  --primary-color: #f5c332;
+  --secondary-color: #231e41;
+  --body-color: #231e41;
+  --text-color: #6f6f87;
+  --white-color: #ffffff;
+  --bg-color: #f9fafc;
+  --body-font-size: 16px;
+  --h1-size: 46px;
+  --h2-size: 28px;
+  --h3-size: 18px;
+  --h4-size: 16px;
+  --h5-size: 14px;
+  --h6-size: 1rem;
+}
+
+/* =============
+   SCROLLBAR
+===============*/
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-white);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* =============
+   GENERAL CSS 
+===============*/
+
+body {
+  font-family: var(--primary-font);
+  font-size: var(--body-font-size);
+  color: var(--body-color);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  line-height: 100%;
+  font-size: var(--h1-size);
+  letter-spacing: -3px;
+}
+
+h2 {
+  line-height: 110%;
+  font-size: var(--h2-size);
+  letter-spacing: -1px;
+}
+
+h3 {
+  line-height: 120%;
+  font-size: var(--h3-size);
+  letter-spacing: -1px;
+}
+
+h4 {
+  line-height: 120%;
+  font-size: var(--h4-size);
+  letter-spacing: 0;
+}
+
+h5 {
+  font-size: var(--h5-size);
+  letter-spacing: 0;
+}
+
+h6 {
+  font-size: var(--h6-size);
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+}
+
+section,
+footer {
+  padding: 110px 0;
+}
+
+/* =============
+   REUSABLE CSS 
+===============*/
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 30px 0;
+}
+
+/* 
+  This will select elements whose class attribute value contains exactly this pattern 'col-'. 
+*/
+
+.content_row [class*='col-'] {
+  grid-column: auto/span 12;
+}
+
+.btn {
+  opacity: 1;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transform: scale(1);
+  height: 55px;
+  letter-spacing: 0;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: var(--primary-color);
+  transition: 0.3s ease-in-out;
+}
+
+.btn span {
+  white-space: nowrap;
+  line-height: 55px;
+  display: inline-block;
+  padding: 0 20px 0 0;
+  font-weight: 500;
+}
+
+.btn .icon {
+  border-radius: 50%;
+  display: inline-flex;
+  white-space: nowrap;
+  line-height: 55px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 !important;
+  margin: 0;
+  width: 55px;
+  height: 55px;
+}
+
+.btn .icon img {
+  width: 22px;
+}
+
+.btn.btn-accent {
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.btn.btn-accent span {
+  padding: 0 0 0 15px;
+}
+
+.btn.btn-accent .icon {
+  transform: scale(0.95);
+  background-color: #f2f3f5;
+  box-shadow: 0 0 0 2px var(--white-color);
+}
+
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--body-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s linear;
+  z-index: -99;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+.sticky-logo {
+  display: none;
+}
+
+/* =============
+     NAVBAR 
+===============*/
+
+.header-mainmenu {
+  padding: 50px 0;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.header .header-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainmenu-nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -320px;
+  background-color: var(--white-color);
+  width: 300px;
+  padding: 20px 10px;
+  transition: all 0.8s cubic-bezier(0.8, 0.2, 0.05, 1);
+  z-index: 1050;
+}
+
+.mainmenu-nav.show {
+  left: 0;
+}
+
+.mainmenu-nav .mainmenu {
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--bg-color);
+}
+
+.mobile-nav-header .mobile-nav-logo {
+  width: 150px;
+  line-height: 1;
+}
+
+.mobile-nav-header .mobile-menu-close {
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  border: 2px solid #99a1aa;
+  border-radius: 10px;
+  color: var(--color-secondary);
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.mainmenu-nav .mainmenu > li {
+  margin: 0 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mainmenu > li > a {
+  color: var(--color-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 60px;
+  height: 60px;
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.mainmenu > li.active > a {
+  color: var(--primary-color);
+}
+
+.mainmenu > li > a:hover {
+  color: var(--primary-color);
+}
+
+.mainmenu .header-btn {
+  margin-top: 15px;
+  margin-left: 24px;
+}
+
+.mainmenu .header-btn .btn-primary {
+  box-shadow: none;
+}
+
+.header-action .sidemenu-btn .btn-wrap {
+  height: 50px;
+  width: 50px;
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-action .sidemenu-btn .btn-wrap span {
+  display: inline-block;
+  height: 2px;
+  width: 20px;
+  background-color: var(--secondary-color);
+  margin-bottom: 4px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-action .sidemenu-btn .btn-wrap span:last-child {
+  margin-bottom: 0;
+  width: 10px;
+  margin-right: -10px;
+}
+
+.header-action .sidemenu-btn .btn-wrap:hover span:first-child {
+  width: 10px;
+  margin-right: -10px;
+}
+
+.header-action .sidemenu-btn .btn-wrap:hover span:last-child {
+  width: 20px;
+  margin-right: 0;
+}
